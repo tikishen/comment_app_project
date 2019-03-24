@@ -105,3 +105,44 @@ Then start the project:
 cd comment-app
 npm start
 ```
+We can see the basic structure has been rendered on the page:
+
+![Draft-ver](https://github.com/tikishen/comment_app_project/blob/master/image/comment-1.png)
+
+### Add style
+
+Let's say, we want this structure to be centered in the browser, we're going to add a style to the `<div>` in `MyCommentApp`. Modify the render method in `MyCommentApp` and add a wrapper class to it:
+
+```
+class MyCommentApp extends Component {
+  render() {
+    return (
+      <div className='wrapper'>
+        <UserInput />
+        <CommentList />
+      </div>
+    )
+  }
+}
+```
+
+Add style to the `index.css`:
+```
+.wrapper {
+  width: 500px;
+  margin: 10px auto;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  padding: 20px;
+}
+```
+We can see in the brower:
+![Draft-ver](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-2.png)
+
+
+
+
+
+
+
