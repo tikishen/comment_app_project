@@ -7,15 +7,15 @@ There are no specific criteria for the division of components. The purpose of di
 
 ![UI Design](https://github.com/tikishen/comment_app_project/blob/master/image/UI.png)
 
-My comment app is divided into four components, `CommentApp`, `UserInput`, `CommentList`, and `Comment`.
+My comment app is divided into four components, `MyCommentApp`, `UserInput`, `CommentList`, and `CommentText`.
 
-`CommentApp`: The whole comment function is included in a component called `CommentApp`. The `CommentApp` contains the upper and lower parts.
+`MyCommentApp`: The whole comment function is included in a component called `CommentApp`. The `CommentApp` contains the upper and lower parts.
 
 `UserInput`: The upper part is the input area responsible for the user input, including the user name, comment content and release button for publishing comments. 
 
 `CommentList`: The lower section is a list of comments, with a component called `CommentList` responsible for the display of the list.
 
-`Comment`: Each comment list item is displayed by a separate component `Comment`.
+`CommentText`: Each comment list item is displayed by a separate component `Comment`.
 
 ### Component implementation
 
@@ -27,22 +27,22 @@ create-react-app comment-app
 Under src/ directory, we create 4 files corresponding to the above four components.
 ```
 src/
-  CommentApp.js
+  MyCommentApp.js
   UserInput.js
   CommentList.js
-  Comment.js
+  CommentText.js
 ```
 
 File name here starts with an uppercase letter, because we need to follow a principle: if a file is exported as a class, then the file name begins with an uppercase.
 
-Let's lay out some basic code so that we can see the relationship between the components. We start at the top level of the component and build the component tree step by step. First modify `CommentApp.js`:
+Let's lay out some basic code so that we can see the relationship between the components. We start at the top level of the component and build the component tree step by step. First modify `MyCommentApp.js`:
 
 ```
 import React, { Component } from 'react'
 import UserInput from './UserInput'
 import CommentList from './CommentList'
 
-class CommentApp extends Component {
+class MyCommentApp extends Component {
   render() {
     return (
       <div>
@@ -53,10 +53,10 @@ class CommentApp extends Component {
   }
 }
 
-export default CommentApp
+export default MyCommentApp
 ```
 
-`CommentApp` is now very simple, with `UserInput` and `CommentList` at the top of the file.It is applied to the JSX structure returned by `CommentApp`. The upper part is the user input area, and the lower part is the comment list.
+`MyCommentApp` is now very simple, with `UserInput` and `CommentList` at the top of the file.It is applied to the JSX structure returned by `MyCommentApp`. The upper part is the user input area, and the lower part is the comment list.
 
 Now modify the contents of `UserInput.js`:
 ```
@@ -92,11 +92,11 @@ Now we can render this simple structure on the page to see what effect, modify `
 ```
 import React from 'react'
 import ReactDOM from 'react-dom'
-import CommentApp from './CommentApp'
+import MyCommentApp from './MyCommentApp'
 import './index.css'
 
 ReactDOM.render(
-  <CommentApp />,
+  <MyCommentApp />,
   document.getElementById('root')
 )
 ```
