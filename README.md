@@ -1,6 +1,6 @@
 # My Comment App
 
-## Basic code framework
+## Basic Framework
 ### Introduction and Component Division
 Everything in React is a component, and the functionality built with React is actually a combination of various components. So the first thing we have to do for building a react project is to understand the requirements, analyze the requirements, and divide which components are composed of this requirement.
 
