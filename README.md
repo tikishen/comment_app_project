@@ -19,3 +19,89 @@ My comment app is divided into four components, `CommentApp`, `UserInput`, `Comm
 
 ### Component implementation
 
+Before writing the code, let's build a new project directory with create-react-app. （"Create React App is an officially supported way to create single-page React applications. It offers a modern build setup with no configuration." Here is the link for offical doc: https://facebook.github.io/create-react-app/docs/getting-started）
+```
+create-react-app comment-app
+```
+
+Under src/ directory, we create 4 files corresponding to the above four components.
+```
+src/
+  CommentApp.js
+  UserInput.js
+  CommentList.js
+  Comment.js
+```
+
+File name here starts with an uppercase letter, because we need to follow a principle: if a file is exported as a class, then the file name begins with an uppercase.
+
+Let's lay out some basic code so that we can see the relationship between the components. We start at the top level of the component and build the component tree step by step. First modify `CommentApp.js`:
+
+```
+import React, { Component } from 'react'
+import UserInput from './UserInput'
+import CommentList from './CommentList'
+
+class CommentApp extends Component {
+  render() {
+    return (
+      <div>
+        <UserInput />
+        <CommentList />
+      </div>
+    )
+  }
+}
+
+export default CommentApp
+```
+
+`CommentApp` is now very simple, with `UserInput` and `CommentList` at the top of the file.It is applied to the JSX structure returned by `CommentApp`. The upper part is the user input area, and the lower part is the comment list.
+
+Now modify the contents of `UserInput.js`:
+```
+import React, { Component } from 'react'
+
+class UserInput extends Component {
+  render() {
+    return (
+      <div>UserInput</div>
+    )
+  }
+}
+
+export default UserInput
+```
+
+For now, let it simply returns the `<div>` structure and we modify the `CommentList.js` in the same way:
+```
+import React, { Component } from 'react'
+
+class CommentList extends Component {
+  render() {
+    return (
+      <div>CommentList</div>
+    )
+  }
+}
+
+export default CommentList
+```
+
+Now we can render this simple structure on the page to see what effect, modify `src/index.js`:
+```
+import React from 'react'
+import ReactDOM from 'react-dom'
+import CommentApp from './CommentApp'
+import './index.css'
+
+ReactDOM.render(
+  <CommentApp />,
+  document.getElementById('root')
+)
+```
+Then start the project:
+```
+cd comment-app
+npm start
+```
