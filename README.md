@@ -141,6 +141,94 @@ Add style to the `index.css`:
 We can see in the brower:
 ![Draft-ver](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-2.png)
 
+### Handle User Input
+
+We first modify `UserInput.js` to improve the HTML structure in the render function of `UsertInput`
+```
+import React, { Component } from 'react'
+
+class UserInput extends Component {
+  render () {
+    return (
+      <div className='comment-input'>
+        <div className='comment-field'>
+          <span className='comment-field-name'>Name：</span>
+          <div className='comment-field-input'>
+            <input />
+          </div>
+        </div>
+        <div className='comment-field'>
+          <span className='comment-field-name'>Leave your message：</span>
+          <div className='comment-field-input'>
+            <textarea />
+          </div>
+        </div>
+        <div className='comment-field-button'>
+          <button>
+            Publish
+          </button>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default CommentInput
+```
+You can see in the browser that the structure and style of `UserInput` have worked:
+![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-3.png)
+
+
+Since we haven't added processing logic yet, typing in the content box and clicking publish will not work. The user can enter the content one is the username (`Name`), one is the comment content (`Leave your message`), so we initialize a state in the component's constructor to save these two states:
+
+```
+class UserInput extends Component {
+  constructor () {
+    super()
+    this.state = {
+      username: '',
+      content: ''
+    }
+  }
+  ...
+}
+```
+
+Then set the value property to the input box so that values of two contents are equal to the corresponding values in this.state :
+```
+<div className='comment-field'>
+    <span className='comment-field-name'>Name：</span>
+    <div className='comment-field-input'>
+      <input value={this.state.username} />
+    </div>
+  </div>
+  <div className='comment-field'>
+    <span className='comment-field-name'>Leave your message：</span>
+    <div className='comment-field-input'>
+      <textarea value={this.state.content} />
+    </div>
+  </div>
+```
+
+Right now, `<input />` that accepts the username input and `<textarea />` that accepts the user's comment are controlled by state.username and state.content respectively. However, at this time, you go to the browser and enter the content, you will find that you can not enter anything.
+
+Why is this? React.js believes that all states should be controlled by the state of React.js. As long as input controls like `<input />`, `<textarea />`, `<select />` are set with values, their values are always keeping to the setting values. So the value does not change, the `value` does not change.
+
+As the example above, the value of `<input />` and `<textarea />` are initialized to an empty string in the constructor. Even if the user tries to type in the input box, nothing change.
+
+So what can we do to update user input into the input box? In React.js, you must use `setState` to update the content of the component, so what we need to do is: add a listener to the `onChange` event of the input box, they can therefore get the content input, and then update the value in the state by `setState`, and the content will be updated.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
