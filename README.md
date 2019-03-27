@@ -219,13 +219,11 @@ As the example above, the value of `<input />` and `<textarea />` are initialize
 So what can we do to update user input into the input box? In React.js, you must use `setState` to update the content of the component, so what we need to do is: add a listener to the `onChange` event of the input box, they can therefore get the content input, and then update the value in the state by `setState`, and the content will be updated.
 
 ```
-...
     <div className='comment-field-input'>
       <input
         value={this.state.username}
         onChange={this.handleUsernameChange.bind(this)} />
     </div>
-...
 ```
 
 The above code adds an onChange event listener to the input, binding to the  `this.handleUsernameChange` method. Code of this function show as the following:
@@ -244,7 +242,6 @@ Components like <input />, <select />, <textarea> whose values are controlled an
   
 Similarly, let <textarea /> be a controlled component:
 ```
-...
   handleContentChange (event) {
     this.setState({
       content: event.target.value
@@ -259,7 +256,6 @@ Similarly, let <textarea /> be a controlled component:
             onChange={this.handleContentChange.bind(this)} />
         </div>
       </div>
-...
 ```
 
 ![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-4.png)
