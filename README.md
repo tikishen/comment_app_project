@@ -218,8 +218,107 @@ As the example above, the value of `<input />` and `<textarea />` are initialize
 
 So what can we do to update user input into the input box? In React.js, you must use `setState` to update the content of the component, so what we need to do is: add a listener to the `onChange` event of the input box, they can therefore get the content input, and then update the value in the state by `setState`, and the content will be updated.
 
+```
+...
+    <div className='comment-field-input'>
+      <input
+        value={this.state.username}
+        onChange={this.handleUsernameChange.bind(this)} />
+    </div>
+...
+```
 
+The above code adds an onChange event listener to the input, binding to the  `this.handleUsernameChange` method. Code of this function show as the following:
 
+```
+  handleUsernameChange (event) {
+    this.setState({
+      username: event.target.value
+    })
+  }
+```
+In this function, we get the user input in `<input />` through `event.target.value`, and then set it to `state.username` through `setState`. At this time, the content of the component will be updated, and the value of input will be updated and displayed in the input box:
+![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-5.png)
+
+Components like <input />, <select />, <textarea> whose values are controlled and rendered by React.js are called Controlled Components. Normally, for the components that users can enter, they can generally be made as controlled components. (https://reactjs.org/docs/forms.html)
+  
+Similarly, let <textarea /> be a controlled component:
+```
+...
+  handleContentChange (event) {
+    this.setState({
+      content: event.target.value
+    })
+  }
+...
+      <div className='comment-field'>
+        <span className='comment-field-name'>Leave your message：</span>
+        <div className='comment-field-input'>
+          <textarea
+            value={this.state.content}
+            onChange={this.handleContentChange.bind(this)} />
+        </div>
+      </div>
+...
+```
+
+![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-4.png)
+
+### Pass data to the parent component
+
+When user types the content in `UserInput` and clicks `Publish`, the content needs to be displayed in the `CommentList` component. Go back to the family tree:
+![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-6.png)
+ 
+`MyCommentApp` component combines `UserInput` and `CommentList`, which is the parent component and act as a bridge between two subcomponents. So when the user clicks the publish button, it pass the latest data in the state of `UserInput` to the parent component `MyCommentApp`, and then let the parent component pass the data to the `CommentList` for rendering.
+
+How can `UserInput` pass data to `MyCommentApp`? The parent component `CommentApp` only needs to pass a callback function to the child component `UserInput` via props. When the user clicks the publish button, `UserInput` calls the callback function in props and passes state to the function.
+
+So, add an event to the publish button first:
+```
+  <div className='comment-field-button'>
+    <button
+      onClick={this.handleSubmit.bind(this)}>
+      Publish
+    </button>
+  </div>
+```
+
+The `this.handleSubmit` method is called when the user clicks the publish button:
+
+```
+  handleSubmit () {
+    if (this.props.onSubmit) {
+      const { username, content } = this.state
+      this.props.onSubmit({username, content})
+    }
+    this.setState({ content: '' })
+  }
+```
+
+The `handleSubmit` method determines if the `onSubmit` property is passed in `props`. If yes, the function is called, the user name and comment data entered by the user are passed to the function. Then use `setState` to clear the user input comments (but considering of a btter user experience, it keeps the username)
+
+Modify `MyCommentApp.js` so that it can get new comment data by passing in the callback:
+```
+class MyCommentApp extends Component {
+  handleSubmitComment (comment) {
+    console.log(comment)
+  }
+
+  render() {
+    return (
+      <div className='wrapper'>
+        <UserInput
+          onSubmit={this.handleSubmitComment.bind(this)} />
+        <CommentList />
+      </div>
+    )
+  }
+}
+```
+We pass an `onSubmit` property to `UserInput` in `MyCommentApp` , which is a method of `MyCommentApp`'s own `handleSubmitComment`. In this way, `UserInput` can call `this.props.onSubmit(...)` to pass the data to `MyCommentApp`.
+
+Now click the publish button after entering the comment in `MyCommentInput` and you will see the data that `MyCommentApp` prints on the console:
+![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-7.png)
 
 
 
