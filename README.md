@@ -238,9 +238,9 @@ The above code adds an onChange event listener to the input, binding to the  `th
 In this function, we get the user input in `<input />` through `event.target.value`, and then set it to `state.username` through `setState`. At this time, the content of the component will be updated, and the value of input will be updated and displayed in the input box:
 ![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-5.png)
 
-Components like <input />, <select />, <textarea> whose values are controlled and rendered by React.js are called Controlled Components. Normally, for the components that users can enter, they can generally be made as controlled components. (https://reactjs.org/docs/forms.html)
+Components like `<input />`, `<select />`, `<textarea>` whose values are controlled and rendered by React.js are called Controlled Components. Normally, for the components that users can enter, they can generally be made as controlled components. (https://reactjs.org/docs/forms.html)
   
-Similarly, let <textarea /> be a controlled component:
+Similarly, let `<textarea />` be a controlled component:
 ```
   handleContentChange (event) {
     this.setState({
