@@ -382,7 +382,7 @@ class CommentList extends Component {
 
     return (
       <div>
-        {comments.map((comment, i) => <Comment comment={comment} key={i} />)}
+        {comments.map((comment, i) => <CommentText comment={comment} key={i} />)}
       </div>
     )
   }
