@@ -488,9 +488,9 @@ To make the code more robust, add a simple data check to `handleSubmitComment`:
 ```
 
 #### Some take aways
-1. Understand as well as analyze requirements and divide components before writing code. The basic principles of dividing components is to consider reusability and maintainability.
+1. Understand as well as analyze requirements and divide components before writing code. The basic principle of dividing components is to consider reusability and maintainability.
 2. Use `create-react-app` to create a React app (Node on the React-Redux map: How do you create a new React app on your local machine?)
-3. The value of the `<input />` , `<textarea />`, `<select >`, etc. in React.js are controlled components if they are under the control of React.js (Back to React-Reduc map: What are the correct statements about creating controlled input?).
+3. The value of the `<input />` , `<textarea />`, `<select >`, etc. in React.js are controlled components because they maintain their own state and update it based on user input (Back to React-Reduc map: What are the correct statements about creating controlled input?).
 4. Use `props` to pass data between children components through a parent element. (Back to React-Reduc map: What is true about `props`?)
 
 
