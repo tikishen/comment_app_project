@@ -316,7 +316,7 @@ We pass an `onSubmit` property to `UserInput` in `MyCommentApp` , which is a met
 Now click the publish button after entering the comment in `MyCommentInput` and you will see the data that `MyCommentApp` prints on the console:
 ![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-7.png)
 
-Then modify the `CommentList` to allow our app to display a list of comments:
+Modify the `CommentList` to allow our app to display a list of comments:
 ```
 // CommentList.js
 import React, { Component } from 'react';
@@ -346,7 +346,7 @@ export default CommentList
 We create an array to store contents of the test data, and then render the comments data to the page. Now we can see from our broswer:
 ![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-8.png)
 
-Modify `CommentText.js` to let it take responsibility for the rendering of each comment:
+The modify `CommentText.js` to let it take responsibility for the rendering of each comment:
 ```
 import React, { Component } from 'react';
 
