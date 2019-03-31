@@ -7,27 +7,27 @@ class UserInput extends Component {
       username: '',
       content: ''
     }
-  }
+  };
 
   handleUsernameChange (event) {
     this.setState({
       username: event.target.value
-    })
-  }
+    });
+  };
 
   handleContentChange (event) {
     this.setState({
       content: event.target.value
-    })
-  }
+    });
+  };
 
   handleSubmit () {
     if (this.props.onSubmit) {
       const { username, content } = this.state
       this.props.onSubmit({username, content})
-    }
-    this.setState({ content: '' })
-  }
+    };
+    this.setState({ content: '' });
+  };
 
   render () {
     return (
