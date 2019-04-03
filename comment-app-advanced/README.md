@@ -14,7 +14,7 @@ After the component is mounted, we can call this.textarea.focus() to add the `Co
 ```
 class UserInput extends Component {
   static propTypes = {
-    onSubmit: PropTypes.func // Used for typechecking
+    onSubmit: PropTypes.func // Uses for typechecking
   }
 
   constructor () {
