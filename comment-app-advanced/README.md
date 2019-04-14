@@ -1,7 +1,7 @@
 **Now let's add some advanced features to MyCommentApp**
 
-### 1. Auto focus to a particular comment box
-We need to get the DOA element of the `textarea` and then call the `focus()` API. We add `ref` to the input box element to get the DOM element and modify the `UserInput.js file` (Back to our React-Reduc map, to see the question: What are refs in React?):
+### 1. Auto focus to comment box
+We need to get the DOM element of the `textarea` and then call the `focus()` API. We add `ref` to the input box element to get the DOM element and modify the `UserInput.js` (Back to our React-Redux map, to see the question: What are refs in React?):
 
 ```
  <textarea
@@ -10,7 +10,7 @@ We need to get the DOA element of the `textarea` and then call the `focus()` API
       onChange={this.handleContentChange.bind(this)} />
 ```
 
-After the component is mounted, we can call this.textarea.focus() to add the `ComponentDidMount` lifecycle to the `CommentInput` component (Back to our React-Reduc map: Which of the followings are true about `componentDidMount()`?):
+After the component is mounted, we can call this.textarea.focus() to add the `ComponentDidMount` lifecycle to the `UserInput` component (Back to our React-Reduc map: Which of the followings are true about `componentDidMount()`?):
 ```
 class UserInput extends Component {
   static propTypes = {
@@ -72,7 +72,7 @@ In `handleUsernameBlur` we pass the user input to the private method `_saveUsern
 Enter the username and see browser console:
 ![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-12.png)
 
-Then load the username when our component is mounted. This is basically a data loading operation. Operations initiated by components that do not rely on DOM operations can be done in `componentWillMount` , so add `componentWillMount`'s component lifecycle to `UserInput`:
+Then load the username when our component is mounted. This is basically a data loading operation. Operations are initiated by components and do not rely on DOM operations can be done in `componentWillMount`. So add `componentWillMount`'s component lifecycle to `UserInput`:
 ```
 componentWillMount () {
     this._loadUsername()
