@@ -326,7 +326,7 @@ In other words, we can pass a configuration parameter of `onDeleteComment` to th
 Now click the delete button, you can see the index corresponding to the comment printed on the console. 
 ![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-16.png)
 
-Here is the whole process: `CommentList` passes the index to `CommentText`. When the delete button is clicked, `CommentText` passes the index to the `CommentList`, and the `CommentList` passes it to the `MyCommentApp`. Now comments can now be removed in `MyCommentApp`:
+Here is the whole process: `CommentList` passes the index to `CommentText`. When the delete button is clicked, `CommentText` passes the index to the `CommentList`, and the `CommentList` passes it to the `MyCommentApp`. Modify `handleDeleteComment`, comments can now be removed in `MyCommentApp`:
 
 ```
   handleDeleteComment (index) {
@@ -341,7 +341,7 @@ We delete the comment with specific index through `comments.splice`, and re-rend
 You can happily delete your comments now. However, after 5 seconds of deleting the comment, you will see an error in the console:
 ![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-17.png)
 
-This happens because we forgot to clear the comment timer, modify `CommentText.js`, add a lifecycle `commentWillUnmount` to clear the timer when the comment component is destroyed:
+This happens because we forgot to clear the comment timer, modify `CommentText.js`, add a lifecycle `commentWillUnmount` to clear the timer when the comment component is destroyed (Back to question tree: Which of the followings is FALSE about `componentWillUnmount()`?):
 ```
   componentWillUnmount () {
     clearInterval(this._timer)
