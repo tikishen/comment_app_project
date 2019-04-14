@@ -70,11 +70,28 @@ class UserInput extends Component {
 In `handleUsernameBlur` we pass the user input to the private method `_saveUsername` (Note: all the private methods start with `_`). `_saveUsername` sets the username field in LocalStorage and keep the username. This is equivalent to automatically save the user name when the user enters the username (when the input box loses focus).
 
 Enter the username and see browser console:
+![Comment](https://github.com/tikishen/comment_app_project/blob/master/image/Comment-12.png)
 
+Then load the username when our component is mounted. This is basically a data loading operation. Operations initiated by components that do not rely on DOM operations can be done in `componentWillMount` , so add `componentWillMount`'s component lifecycle to `UserInput`:
+```
+componentWillMount () {
+    this._loadUsername()
+  }
 
+  _loadUsername () {
+    const username = localStorage.getItem('username')
+    if (username) {
+      this.setState({ username })
+    }
+  }
 
+  _saveUsername (username) {
+    localStorage.setItem('username', username)
+  }
+```
+`componentWillMount` calls the private method `_loadUsername`, and `_loadUsername` loads the username from LocalStorage and `setState` to the component's `state.username`. Then the component can use the username when it is rendered.
 
-
+Such user experience is much better. Do not need to enter a username when refreshing the page, and automatically focus on the input box.
 
 
 

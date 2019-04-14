@@ -51,11 +51,8 @@ class UserInput extends Component {
 
   handleSubmit () {
     if (this.props.onSubmit) {
-      this.props.onSubmit({
-        username: this.state.username,
-        content: this.state.content,
-        createdTime: +new Date()
-      });
+      const { username, content } = this.state
+      this.props.onSubmit({username, content})
     };
     this.setState({ content: '' });
   };
