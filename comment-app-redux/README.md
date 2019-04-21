@@ -81,6 +81,8 @@ dispatch(initComments(comments))
 The additional benefit of using action creator is that it can help us to do a unified processing of incoming data; and with action creators, testing could be more convenient. (See more about action creator: What is an action creator in Redux?)
 
 Code for the entire `src/reducers/comments.js` is：
+
+```
 // action types
 const INIT_COMMENTS = 'INIT_COMMENTS'
 const ADD_COMMENT = 'ADD_COMMENT'
@@ -125,6 +127,7 @@ export const addComment = (comment) => {
 export const deleteComment = (commentIndex) => {
   return { type: DELETE_COMMENT, commentIndex }
 }
+```
 
 
 
