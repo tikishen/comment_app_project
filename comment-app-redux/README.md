@@ -52,7 +52,7 @@ export default function (state, action) {
 
 We only store the state of one `comment`, initialized to an empty array. When the action of `INIT_COMMENTS` is encountered, a new object is created and the comments property inside is overridden with a`ction.comments`. This is the initialization comment operation.
 
-Similarly, the new comment operation `ADD_COMMENT` will also create a new object, and then create an new array. It copy the contents in the original `state.comments` to the new array, and add `action.comment` after the new array. This makes the new array contains one more comment than the original one. `[...]` here is a spread operator in Redux, we can use it to copy enumerable properties from one object to another.
+Similarly, the new comment operation `ADD_COMMENT` will also create a new object, and then create an new array. It copy the contents in the original `state.comments` to the new array, and add `action.comment` after the new array. This makes the new array contains one more comment than the original one. `[...]` here is a spread operator (See more: https://redux.js.org/recipes/using-object-spread-operator), we can use it to copy enumerable properties from one object to another.
 
 For deleting comments, what we need to do is to create a new array with the contents of the specific index. The array `slice(from, to)` will put a specific range of content into the new array based on the index you pass in. So we can use slice to copy the content before the index of `action.commentIndex` in the original comment array into an array, and copy the `action.commentIndex` coordinates to the other array. Then combine the two arrays, which is equivalent to "deleting" the comments of `action.commentIndex`.
 
